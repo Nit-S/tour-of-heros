@@ -8,25 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Hero = (function () {
-    function Hero() {
+    function Hero(id, name) {
+        this.id = id;
+        this.name = name;
     }
     return Hero;
 }());
 exports.Hero = Hero;
+var HEROES = [
+    new Hero(1, 'war machine'),
+    new Hero(2, 'iron man'),
+    new Hero(3, 'loda lussan'),
+    new Hero(4, 'pudina ram'),
+    new Hero(5, 'ravi kishan'),
+    new Hero(6, 'mulchand sharma'),
+    new Hero(7, 'dengu mal'),
+    new Hero(8, 'gandu ram'),
+    new Hero(9, 'chutiya'),
+    new Hero(10, 'randi')
+];
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Tour of Heroes';
-        this.hero = {
-            id: 1,
-            name: 'Windstorm'
-        };
+        this.heroes = HEROES;
     }
+    AppComponent.prototype.onSelect = function (hero) {
+        this.selectedHero = hero;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>{{title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\">\n    </div>\n    "
+        template: "\n    <h1>{{title}}</h1>\n    <h2>My Heroes</h2>\n\n    <ul>\n     <li *ngFor=\"let hero of heroes\" \n     (click) = onSelect(hero)>\n     <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n     </li>\n    </ul>\n    \n    <h2>{{selectedHero.name}} details!</h2>\n\n    <div *ngIf=\"selectedHero\">\n    <div>\n      <label>id: </label> \n      <input [(ngModel)]=\"selectedHero.id\" placeholder=\"ID\">\n    </div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"selectedHero.name\" placeholder=\"NAME\">\n    </div>\n    </div>\n    "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
