@@ -7,15 +7,14 @@ import { Hero } from './hero';
     templateUrl: './dashboard.component.html'
 })
 
-export class DashboardComponent implements OnInit{
-    hero: Hero;
+export class DashboardComponent implements OnInit {
     heroes: Hero[];
-    constructor(private heroService: HeroService){
+    constructor(private heroService: HeroService) {
     }
-    getHeroes(): void{
-        this.heroService.getHeroes().then(heroes=>this.heroes= heroes.slice(1,5));
+    getHeroes(): void {
+        this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1, 5));
     }
-    ngOnInit(){
+    ngOnInit() {
         this.getHeroes();
     }
 }
