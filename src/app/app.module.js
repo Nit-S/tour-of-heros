@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms"); // <-- NgModel lives here
+var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var hero_detail_coomponent_1 = require("./hero-detail.coomponent");
 var heroes_component_1 = require("./heroes.component");
@@ -25,7 +26,8 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            http_1.HttpModule
         ],
         declarations: [
             app_component_1.AppComponent,
